@@ -1,66 +1,357 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# About Project
+###  Project's Title
+> Travelling  
+> http://api-traveling.rocketsystems.net/
+###  Project's Description
+> This is project API for flights and hotels booking.  
+> PHP version: 8.2  
+> Laravel version: 10.0   
+> Database is: MySql
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### How to Install and Run the Project
+> `cd /var/www`  
+> `git clone https://github.com/vardshushan/travelling-api.git`  
+> `cd travelling-api`  
+> `composer install`  
+> `php artisan migrate`  
+> `php artisan db:seed --class=UserSeeder`
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+# API's
+## Auth
+<details><summary>Register</summary>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/register
+-  **Parameters:**
+```json
+{  
+     "first_name": "string",  
+     "last_name": "string",  
+     "email": "string",  
+     "password":"string"  
+   }
+```
+- **Success Message:**
+ ```json
+{
+    "success": true,
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiODFmYzM4ZjBhN2NmYzJjMWEzMzI4ZmExZjg4NmFlODkwNTlmNmU4ZmUzNWQwYmYwN2I1ODU0MTBmMmQ0MzRjNzBlNzA1N2E0ODc4ZTk4YjEiLCJpYXQiOjE2ODA2MTY2NTEuOTU1OTU4LCJuYmYiOjE2ODA2MTY2NTEuOTU1OTU5LCJleHAiOjE3MTIyMzkwNTEuOTUzNjE1LCJzdWIiOiIxMiIsInNjb3BlcyI6W119.oDP24W5i4gxCwtagIt0OmMIpXe4YU9D5LD_O4kCWh5vxb872MHIU08BhLzOrj2fsZu4i6Z48gcveuZ9USla9Ty_PgZ2ibzGWH4v9EfILRxz8MPeLrvlCGMUaG1UfLcd2Ls6sb8PCYzT6EnnQfKYnyTnESN55u22kpcICpVUcDoPNIvL_58x0JXK6dF1nbEBigp0Md2rcHOEpcG6LkO7T7VcinC96JGNSRYdoeoUkWO0rZ4aBcRISHC7iZVN6krE5RxYCPB52LQbyADWG2FgeowJVEthRN6sKWWzIiXjTi9kZGn1WqNjvAEI_VZqh_jqGfNqgaGTctqVIFRBbDhB1V6OgUYD4MJjYlKM73d6U4EHtEejPHHsCX4jdITbjrpQmuwsFMYdPn5EsdEp7yBNEt2Uv7R8NE8Rfr665O8Dy5glCLzVswqGErdMk9ORPgln-8E0fVO7-ONEsaE7q82-esb9w5WuaSkpV7KpvNmaqzZ22KWbAaRlfYu1OwLmw9my8zRNnCImIdlg4vxjNaxalyrHk-FkQ7wYIC4FJj7RnaQEh767Pts4nG3_1vklF7WrHlr1S9ZLiiVjZpt6sa__diY4rFJcu-y6PVXTUSEeRJFKuh272TG-B9wNT6eWQp5IQt-Dy0zCRX_uDGBlPq2dWRD1DXmOAe6h9vy2lRqPMULk",
+        "first_name": "string",
+        "last_name": "string"
+    },
+    "message": "User register successfully."
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Validation errors",
+    "data": {
+        "email": [
+            "The email has already been taken."
+        ]
+    }
+}
+```
+</details>
+<details><summary>Login</summary>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/login
+-  **Parameters:**
+```json
+{
+     "email": "string",  
+     "password":"string"  
+}
+```
+- **Success Message:**
+ ```json
+{
+    "success": true,
+    "data": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiZmRlMTRiZGY4MTkwYWNmMzFmNDMwMTJkNDIzZDc4NWM4NjEwZjEyZDgwMDEyZThlMTI3NjM5Yzk1YmY4ZjA0YmEyZmM3YmNlM2IzMGE5ODUiLCJpYXQiOjE2ODA2MTM3ODMuNTk4OTcsIm5iZiI6MTY4MDYxMzc4My41OTg5NzIsImV4cCI6MTcxMjIzNjE4My41OTYzMTUsInN1YiI6IjgiLCJzY29wZXMiOltdfQ.M8Fay3xN8Ie92NwLcB23u-UXIJVDme4Mh7oo6BrUBbw2yCvAIVSqTlij7EQr_b0adViOmLdSih4sgRDPIW5K6kiUVpL2dYNE911exOIh-5m2yN0zKa9GaJOGf5cHeWm_xMVezeyyyzuoxwi9n_yKfSPPbHtoOt9fAr3nPnFsaiUcciquQb8DFx8syFhG80fg4Shrvck9gW679wJvlhPTQkWY18OkNFM5MAfiguvoTSV7I9oVNUQswPgbcOXOZnRX__NJSuovw8PVEISj5LUCGn086k4MWyby1DwrvFBGD-Rd6qEip7STQJw0eNmhROM327wWvDR_5S7OSFyoeK6IKcrjA0wxGk6i8_WH7PPPS0C9ESqNuXWv1jGUQQU307_kqqvJ0MUrw7dLduy_XXG9dbYkCy54TV7CZW_OXNl6uxs2FjXDhxP8CvzdqflMzngJDe1BaPqa1BHX9cv1wKs9Idd6TfNEau1I_GNU9zhnEgqVkJdxycAZ_4AV6j3MyzT0Uzk2vZvkkzZs_HmMW4QsBmaknzzN1i5-Qtj3OoN5kqzGRvumgGSeAl4ELlEiMPNs71sfSrLNJmF31porlO9mlUw4SpfA54LJIwKQMI_uefK47i3Thv0TzRoVudr8I_WSs0tb1_XaQQO2IT5uI-Z2qM_fZgSdQ6Z7ZVorAsxGSvo",
+        "first_name": "string",
+        "last_name": "string"
+    },
+    "message": "User login successfully."
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Unauthorised.",
+    "data": {
+        "error": "Unauthorised"
+    }
+}
+```
+</details>
+<details><summary>Connect with Facebook</summary>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Method:** GET
+- **URL:**  http://api-traveling.rocketsystems.net/api/redirectFacebook
+</details>
+<details><summary>Connect with Google</summary>
 
-## Laravel Sponsors
+- **Method:** GET
+- **URL:**  http://api-traveling.rocketsystems.net/api/redirectGoogle
+</details>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+## Companies
+<details><summary>Create Company</summary>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/company
+-  **Parameters:**
+```json
+{
+    "name":"String",
+    "description":"String"
+}
+```
+- **Success Message:**
+ ```json
+{
+    "name": "FlyOnedvdgdg",
+    "description": "This is travelling company",
+    "updated_at": "2023-04-04T14:45:54.000000Z",
+    "created_at": "2023-04-04T14:45:54.000000Z",
+    "id": 7
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Validation errors",
+    "data": {
+        "name": [
+            "The name field is required."
+        ]
+    }
+}
+```
+</details>
+<details><summary>Update Company</summary>
 
-## Contributing
+- **Method:** PUT
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/company/1
+-  **Parameters:**
+```json
+{
+    "name":"String",
+    "description":"String"
+}
+```
+- **Success Message:**
+ ```json
+{
+    "id": 1,
+    "name": "test",
+    "description": "This is travelling company",
+    "img": null,
+    "created_at": "2023-03-31T14:44:26.000000Z",
+    "updated_at": "2023-04-04T14:53:08.000000Z"
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Validation errors",
+    "data": {
+        "name": [
+            "The name field is required."
+        ]
+    }
+}
+```
+</details>
+<details><summary>Delete Company</summary>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Method:** DELETE
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/company/1
+```
+- **Success Message:**
+ 1
+```
+```
+- **Error Message:**  
+0
+```
+</details>
+<details><summary>get all Companies</summary>
 
-## Code of Conduct
+- **Method:** GET
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/company
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Success Message:**
+ ```json
+[
+    {
+        "id": 3,
+        "name": "FlyOne1xxxx11",
+        "description": "This is travelling company",
+        "img": null,
+        "created_at": "2023-03-31T14:44:26.000000Z",
+        "updated_at": "2023-04-04T14:53:08.000000Z"
+    },
+    {
+        "id": 4,
+        "name": "FlyOnedvdgdg",
+        "description": "This is travelling company",
+        "img": null,
+        "created_at": "2023-03-31T14:44:26.000000Z",
+        "updated_at": "2023-03-31T14:44:26.000000Z"
+    }
+    ]
+```
+</details>
 
-## Security Vulnerabilities
+## Directions
+<details><summary>Create Direction</summary>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/direction
+-  **Parameters:**
+```json
+{
+    "start_location":"String",
+    "end_location":"String",
+    "duration":"Number",
+    "description":"String",
+    "price":"Float"
+}
+```
+- **Success Message:**
+ ```json
+{
+    "start_location": "Italy",
+    "end_location": "Rome 111",
+    "duration": 250,
+    "price": 700.25,
+    "description": "this is direction from Yerevan to Rome",
+    "updated_at": "2023-04-05T07:31:06.000000Z",
+    "created_at": "2023-04-05T07:31:06.000000Z",
+    "id": 28
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Validation errors",
+    "data": {
+        "start_location": [
+            "The start location field is required."
+        ]
+    }
+}
+```
+</details>
+<details><summary>Update Direction</summary>
 
-## License
+- **Method:** PUT
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/direction/1
+-  **Parameters:**
+```json
+{
+    "start_location":"String",
+    "end_location":"String",
+    "duration":"Number",
+    "description":"String",
+    "price":"Float"
+}
+```
+- **Success Message:**
+ ```json
+{
+    "id": 8,
+    "start_location": "String",
+    "end_location": "String",
+    "duration": "Number",
+    "description": "String",
+    "price": "Float",
+    "cover_img": "String",
+    "created_at": "String",
+    "updated_at": "String"
+}
+```
+- **Error Message:**
+ ```json
+{
+    "success": false,
+    "message": "Validation errors",
+    "data": {
+        "start_location": [
+            "The start location field is required."
+        ]
+    }
+}
+```
+</details>
+<details><summary>Delete Direction</summary>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Method:** DELETE
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/direction/1
+```
+- **Success Message:**
+ 1
+```
+```
+- **Error Message:**  
+0
+```
+</details>
+<details><summary>get all Directions</summary>
+
+- **Method:** GET
+- **URL:**    http://api-traveling.rocketsystems.net/api/admin/company
+
+- **Success Message:**
+ ```json
+[
+    {
+        "id": 1,
+        "start_location": "Yerevan",
+        "end_location": "Rome",
+        "duration": 250,
+        "description": "this is directon from Yerevan to Rome",
+        "price": 700.25,
+        "cover_img": null,
+        "created_at": "2023-03-29T11:08:22.000000Z",
+        "updated_at": "2023-03-29T11:08:22.000000Z"
+    },
+    {
+        "id": 2,
+        "start_location": "Yerevan",
+        "end_location": "Rome",
+        "duration": 250,
+        "description": "this is directon from Yerevan to Rome",
+        "price": 700.25,
+        "cover_img": null,
+        "created_at": "2023-03-29T12:38:19.000000Z",
+        "updated_at": "2023-03-29T12:38:19.000000Z"
+    }
+]
+```
+</details>
+
+
+
+
+
+
+
+
+
+

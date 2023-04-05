@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\DirectionRequest;
 use App\Models\Direction;
-use Illuminate\Http\Request;
 use App\Services\DirectionService;
 
 class DirectionController extends Controller

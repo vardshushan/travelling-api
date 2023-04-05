@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\API\BaseController;
 use http\Client\Request;
 
 class AdminController extends BaseController

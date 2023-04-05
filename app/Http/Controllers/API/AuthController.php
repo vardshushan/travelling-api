@@ -3,7 +3,6 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
-//use App\Http\Controllers\BaseController;
 use App\Services\SocialFacebookAccountService;
 use App\Services\SocialGoogleAccountService;
 use Illuminate\Http\Request;
@@ -78,7 +77,4 @@ class AuthController extends BaseController
 
 
 }
-
-
-
 ?>
