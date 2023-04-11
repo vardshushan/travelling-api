@@ -1,10 +1,10 @@
 <?php
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Auth\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
-class DirectionRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,15 @@ class DirectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'start_location' => ['required', 'string', 'max:255'],
-            'end_location' => ['required', 'string', 'max:255'],
-            'duration' => ['integer'],
-            'price' => ['regex:/^\d+(\.\d{1,2})?$/'],
-            'description' => ['string', 'max:500'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => 'required|email|unique:users,email,NULL,id,social_id,NULL',
+            'password' => ['required','string','min:6', 'confirmed'],
+            'password_confirmation' => ['required', 'string', 'min:6', 'same:password'],
         ];
     }
+
+
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([

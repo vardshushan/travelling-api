@@ -1,14 +1,11 @@
 <?php
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\Auth\Api\RegisterRequest;
 use App\Models\User;
-use App\Services\SocialFacebookAccountService;
-use App\Services\SocialGoogleAccountService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends BaseController
 {
@@ -39,42 +36,4 @@ class AuthController extends BaseController
         }
         return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
     }
-
-    /**
-     * Create a redirect method to facebook api.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function redirectFacebook()
-    {
-        return Socialite::driver('facebook')->stateless()->redirect();
-    }
-
-    /**
-     * Return a callback method from facebook api.
-     *
-     * @return \Illuminate\Http\RedirectResponse URL from facebook
-     */
-    public function callbackFacebook(SocialFacebookAccountService $service)
-    {
-        $service->createOrGetUser(Socialite::driver('facebook')->stateless()->user());
-        return redirect()->to('/');
-    }
-    public function redirectGoogle()
-    {
-        return Socialite::driver('google')->stateless()->redirect();
-    }
-
-    public function callbackGoogle(SocialGoogleAccountService $service)
-    {
-        try {
-            $service->createOrGetUser(Socialite::driver('Google')->stateless()->user());
-            return redirect()->to('/');
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
-    }
-
-
 }
-?>

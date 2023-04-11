@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/redirectFacebook', [AuthController::class, 'redirectFacebook']);
-Route::get('/callback', [AuthController::class, 'callbackFacebook']);
-//Google Auth
-Route::get('/redirectGoogle', [AuthController::class, 'redirectGoogle']);
-Route::get('/callbackGoogle', [AuthController::class, 'callbackGoogle']);
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::get('register', [AuthController::class, 'index'])->name('register.index');
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('login', [AuthController::class, 'loginIndex'])->name('login.index');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', function () {
+            return view('adminDashboard');
+        })->name('admin.dashboard');
+    });
+});
+
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');

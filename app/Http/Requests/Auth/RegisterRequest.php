@@ -25,17 +25,8 @@ class RegisterRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => 'required|email|unique:users,email,NULL,id,social_id,NULL',
-            'password' => ['required','min:6'],
+            'password' => ['required','string','min:6', 'confirmed'],
+            'password_confirmation' => ['required', 'string', 'min:6', 'same:password'],
         ];
-    }
-
-
-    public function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'success'   => false,
-            'message'   => 'Validation errors',
-            'data'      => $validator->errors()
-        ]));
     }
 }
