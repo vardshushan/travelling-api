@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Rocket Systems | Admin</title>
+<title>Travelling | Admin</title>
 
 <!-- Favicons -->
 <link href="/favicon.ico" rel="icon">
