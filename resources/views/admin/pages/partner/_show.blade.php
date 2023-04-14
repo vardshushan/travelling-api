@@ -7,27 +7,32 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Url</th>
+                <th scope="col">Logo</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-            @forelse($blogs as $blog)
+            @forelse($partners as $partner)
                 <tr>
-                    <th scope="row">{{$blog->id}}</th>
+                    <th scope="row">{{$partner->id}}</th>
                     <td><span style="width: 500px;
                                      white-space: nowrap;
                                      overflow: hidden;
                                      text-overflow: ellipsis;
-                                     display: block;">{{$blog->title}} </span></td>
-                    <td><img class="w200" src="{{ asset("storage/$blog->image") }}" alt="logo"></td>
+                                     display: block;">{{$partner->title}} </span></td>
+                    <td>{{$partner->email}}</td>
+                    <td>{{$partner->url}}</td>
+                    <td><img class="w200" src="{{ asset("storage/$partner->logo") }}" alt="logo"></td>
                     <td>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{$blog->id}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editModal{{$partner->id}}">
                             Edit
                         </button>
                         <button class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{$blog->id}}">
+                                data-bs-target="#deleteModal{{$partner->id}}">
                             Delete
                         </button>
                     </td>

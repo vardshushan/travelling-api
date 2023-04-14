@@ -52,9 +52,11 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CompanyInfoController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ExpertiseController;
 use App\Http\Controllers\Admin\OurValueController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RecognizedBy;
 use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\ReferralController;
@@ -107,6 +109,23 @@ Route::prefix('admin')->as('admin.')->group(function () {
                 Route::put('{id}', 'update')->name('update');
                 Route::delete('{id}', 'delete')->name('delete');
             });
-
+        Route::prefix('partner')
+            ->as('partner.')
+            ->controller(PartnerController::class)
+            ->group(function () {
+                Route::get('/', 'index')->name('open');
+                Route::post('create', 'create')->name('create');
+                Route::put('{id}', 'update')->name('update');
+                Route::delete('{id}', 'delete')->name('delete');
+            });
+        Route::prefix('content')
+            ->as('content.')
+            ->controller(ContentController::class)
+            ->group(function () {
+                Route::get('/', 'index')->name('open');
+                Route::post('create', 'create')->name('create');
+                Route::put('{id}', 'update')->name('update');
+                Route::delete('{id}', 'delete')->name('delete');
+            });
     });
 });

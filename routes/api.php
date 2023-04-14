@@ -27,7 +27,7 @@ Route::middleware('auth:api');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('register', [AuthController::class, 'index'])->name('register.index');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::get('login', [AuthController::class, 'loginIndex'])->name('login.index');
+Route::get('login', [AuthController::class, 'login'])->name('login.index');
 
 Route::group(['middleware' => ['auth:api', 'admin']], function () {
     Route::get('dashboard', [AuthController::class, 'dashboard']);

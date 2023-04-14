@@ -1,7 +1,8 @@
 <div class="modal fade" id="editModal{{$blog->id}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <form action="{{route('admin.blog.update', ['id' => $blog->id])}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('admin.blog.update', ['id' => $blog->id])}}" method="post"
+                  enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="modal-header">
@@ -17,13 +18,15 @@
                         <div class="form-group">
                             <label>Image</label>
                             <input type="file" name="image" class="form-control" accept=".png, .jpg, .svg">
+                            <input type="hidden" name="image_url" class="form-control" value="{{ $blog->image }}">
                         </div>
                         <div class="form-group text-center">
                             <img class="w200" src="{{ asset("storage/$blog->image") }}" alt="logo">
                         </div>
                         <div class="form-group mb-0">
                             <label>Description</label>
-                            <textarea rows="4" cols="50" class="tinymce-editor" name="description" required>{{$blog->description}}</textarea>
+                            <textarea rows="4" cols="50" class="tinymce-editor" name="description"
+                                      required>{{$blog->description}}</textarea>
                         </div>
                     </div>
                 </div>

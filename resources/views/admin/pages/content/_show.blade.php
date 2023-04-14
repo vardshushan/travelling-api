@@ -8,26 +8,27 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
+                <th scope="col">Type</th>
                 <th scope="col">Image</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-            @forelse($blogs as $blog)
+            @forelse($contents as $content)
                 <tr>
-                    <th scope="row">{{$blog->id}}</th>
+                    <th scope="row">{{$content->id}}</th>
                     <td><span style="width: 500px;
                                      white-space: nowrap;
                                      overflow: hidden;
                                      text-overflow: ellipsis;
-                                     display: block;">{{$blog->title}} </span></td>
-                    <td><img class="w200" src="{{ asset("storage/$blog->image") }}" alt="logo"></td>
+                                     display: block;">{{$content->title}} </span></td>
+                    <td>{{$content->type}}</td>
+                    <td><img class="w200" src="{{ asset("storage/$content->image") }}" alt="logo"></td>
                     <td>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{$blog->id}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{$content->id}}">
                             Edit
                         </button>
-                        <button class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{$blog->id}}">
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{$content->id}}">
                             Delete
                         </button>
                     </td>
