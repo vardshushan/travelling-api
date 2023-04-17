@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4>Description</h4>
+        <h4>Partners</h4>
     </div>
     <div class="card-body">
         <table class="table">
@@ -18,11 +18,11 @@
             @forelse($partners as $partner)
                 <tr>
                     <th scope="row">{{$partner->id}}</th>
-                    <td><span style="width: 500px;
+                    <td><span style="max-width: 300px;
                                      white-space: nowrap;
                                      overflow: hidden;
                                      text-overflow: ellipsis;
-                                     display: block;">{{$partner->title}} </span></td>
+                                     display: block;">{{$partner->name}} </span></td>
                     <td>{{$partner->email}}</td>
                     <td>{{$partner->url}}</td>
                     <td><img class="w200" src="{{ asset("storage/$partner->logo") }}" alt="logo"></td>

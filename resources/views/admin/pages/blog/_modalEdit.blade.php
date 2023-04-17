@@ -24,7 +24,7 @@
                             <img class="w200" src="{{ asset("storage/$blog->image") }}" alt="logo">
                         </div>
                         <div class="form-group mb-0">
-                            <label>Description</label>
+                            <label>Blog Content</label>
                             <textarea rows="4" cols="50" class="tinymce-editor" name="description"
                                       required>{{$blog->description}}</textarea>
                         </div>

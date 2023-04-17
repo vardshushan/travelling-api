@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4>Description</h4>
+        <h4>Contents</h4>
     </div>
     <div class="card-body">
         <table class="table">
@@ -17,7 +17,7 @@
             @forelse($contents as $content)
                 <tr>
                     <th scope="row">{{$content->id}}</th>
-                    <td><span style="width: 500px;
+                    <td><span style="max-width: 200px;
                                      white-space: nowrap;
                                      overflow: hidden;
                                      text-overflow: ellipsis;
