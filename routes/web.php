@@ -60,6 +60,7 @@ use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RecognizedBy;
 use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\ReferralController;
+use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -126,6 +127,13 @@ Route::prefix('admin')->as('admin.')->group(function () {
                 Route::post('create', 'create')->name('create');
                 Route::put('{id}', 'update')->name('update');
                 Route::delete('{id}', 'delete')->name('delete');
+            });
+        Route::prefix('reports')
+            ->as('reports.')
+            ->controller(ReportsController::class)
+            ->group(function () {
+                Route::get('/flights', 'getFlights')->name('flights');
+                Route::get('/hotels', 'getHotels')->name('hotels');
             });
     });
 });
