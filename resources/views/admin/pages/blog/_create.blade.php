@@ -15,7 +15,7 @@
                     <input type="file" name="image" class="form-control" accept=".png, .jpg, .svg" required>
                 </div>
                 <div class="form-group mb-0">
-                    <label>Description</label>
+                    <label>Blog Content</label>
                     <textarea class="tinymce-editor" name="description"></textarea>
                 </div>
             </div>
