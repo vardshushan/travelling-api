@@ -22,6 +22,7 @@
 > `php artisan db:seed --class=UserSeeder`
 
 > `sudo ./vendor/bin/sail artisan `
+
 # API's
 
 ## Auth
@@ -111,8 +112,6 @@
 ```
 
 </details>
-
-
 <details><summary>ask question to Chat Openai</summary>
 
 - **Method:** POST
@@ -142,4 +141,74 @@
 }
 ```
 
+</details>
+<details><summary>get blogs</summary>
+
+- **Method:** GET
+- **URL:**    http://api-traveling.rocketsystems.net/api/blogs
+- **Success Message:**
+
+ ```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 3,
+            "title": "String",
+            "description": "String",
+            "image": "images/blog/QYQ2qs97pdKnseaEEHFCrqPdRviVuHk1COBYksmn.png",
+            "created_at": "2023-04-13T14:34:01.000000Z",
+            "updated_at": "2023-04-13T14:34:01.000000Z"
+        }
+    ]
+}
+```
+</details>
+<details><summary>get Content of current page</summary>
+
+- **Method:** GET
+- **URL:**    http://api-traveling.rocketsystems.net/api/contents?page=help_center
+- **Success Message:**
+
+ ```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 2,
+            "title": "string",
+            "content": "string",
+            "type": "string",
+            "image": "image-string",
+            "created_at": "2023-04-17T13:40:08.000000Z",
+            "updated_at": "2023-04-17T13:40:08.000000Z"
+        }
+    ],
+    "message": "Content Page."
+}
+```
+</details>
+<details><summary>get partners</summary>
+
+- **Method:** GET
+- **URL:**    http://api-traveling.rocketsystems.net/api/partners
+- **Success Message:**
+
+ ```json
+{
+    "success": true,
+    "data": [
+        {
+            "id": 2,
+            "name": "testtt",
+            "email": "sadcfvgrb@gmail.com",
+            "url": "https://www.rocketsystems.net/",
+            "logo": "images/partner/xSm3fZeJB1GfWa2sb2fEi0FtY4HetH5KPZQ3ei1H.png",
+            "created_at": "2023-04-17T13:38:19.000000Z",
+            "updated_at": "2023-04-17T13:38:19.000000Z"
+        }
+    ],
+    "message": "All partners"
+}
+```
 </details>

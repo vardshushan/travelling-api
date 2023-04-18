@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\API\AdminController;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BlogController;
+use App\Http\Controllers\API\ContentController;
 use App\Http\Controllers\API\OpenAIController;
+use App\Http\Controllers\API\PartnersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +36,8 @@ Route::group(['middleware' => ['auth:api', 'admin']], function () {
 
 Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::post('open-ai', [OpenAIController::class, 'index']);
+Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
+Route::get('contents', [ContentController::class, 'index'])->name('contents');
+Route::get('partners', [PartnersController::class, 'index'])->name('partners');
 
 
