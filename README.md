@@ -1,14 +1,19 @@
 # About Project
-###  Project's Title
+
+### Project's Title
+
 > Travelling  
 > http://api-traveling.rocketsystems.net/
-###  Project's Description
+
+### Project's Description
+
 > This is project API for flights and hotels booking.  
 > PHP version: 8.2  
 > Laravel version: 10.0   
 > Database is: MySql
 
 ### How to Install and Run the Project
+
 > `cd /var/www`  
 > `git clone https://github.com/vardshushan/travelling-api.git`  
 > `cd travelling-api`  
@@ -16,27 +21,29 @@
 > `php artisan migrate`  
 > `php artisan db:seed --class=UserSeeder`
 
-
-
-
-
+> `sudo ./vendor/bin/sail artisan `
 # API's
+
 ## Auth
+
 <details><summary>Register</summary>
 
 - **Method:** POST
 - **URL:**    http://api-traveling.rocketsystems.net/api/register
--  **Parameters:**
+- **Parameters:**
+
 ```json
-{  
-     "first_name": "string",  
-     "last_name": "string",  
-     "email": "string",  
-     "password":"string",
-    "password_confirmation":"string"
+{
+    "first_name": "string",
+    "last_name": "string",
+    "email": "string",
+    "password": "string",
+    "password_confirmation": "string"
 }
 ```
+
 - **Success Message:**
+
  ```json
 {
     "success": true,
@@ -48,7 +55,9 @@
     "message": "User register successfully."
 }
 ```
+
 - **Error Message:**
+
  ```json
 {
     "success": false,
@@ -60,19 +69,23 @@
     }
 }
 ```
+
 </details>
 <details><summary>Login</summary>
 
 - **Method:** POST
 - **URL:**    http://api-traveling.rocketsystems.net/api/login
--  **Parameters:**
+- **Parameters:**
+
 ```json
 {
-     "email": "string",  
-     "password":"string"  
+    "email": "string",
+    "password": "string"
 }
 ```
+
 - **Success Message:**
+
  ```json
 {
     "success": true,
@@ -84,7 +97,9 @@
     "message": "User login successfully."
 }
 ```
+
 - **Error Message:**
+
  ```json
 {
     "success": false,
@@ -94,4 +109,37 @@
     }
 }
 ```
+
+</details>
+
+
+<details><summary>ask question to Chat Openai</summary>
+
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/open-ai
+- **Parameters:**
+
+```json
+{
+    "search": "string-ask question."
+}
+```
+
+- **Success Message:**
+
+ ```json
+{
+    "role": "assistant",
+    "content": "As an AI language model, I don't have personal preferences or the ability to recommend hotels based on my experiences. However, here are some of the top-rated hotels in Armenia according to TripAdvisor:\n\n1. The Alexander Hotel - Yerevan\n2. Grand Hotel Yerevan - Yerevan\n3. Hyatt Place Yerevan - Yerevan\n4. Tufenkian Historic Yerevan Hotel - Yerevan\n5. Ani Plaza Hotel - Yerevan\n6. Ararat Resort Tsaghkadzor - Tsaghkadzor\n7. Best Western Plus Paradise Hotel Dilijan - Dilijan\n8. Multi Grand Pharaon Hotel - Tsaghkadzor\n9. Armenia Marriott Hotel Yerevan - Yerevan\n10. Golden Palace Hotel Resort & Spa GL - Tsaghkadzor"
+}
+```
+
+- **Error Message:**
+
+ ```json
+{
+    "error": "Client error: `POST https://api.openai.com/v1/chat/completions` resulted in a `400 Bad Request` response:\n{\n  \"error\": {\n    \"message\": \"None is not of type 'string' - 'messages.0.content'\",\n    \"type\": \"invalid_request_error\" (truncated...)\n"
+}
+```
+
 </details>
