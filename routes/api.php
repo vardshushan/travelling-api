@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\ContentController;
 use App\Http\Controllers\API\OpenAIController;
 use App\Http\Controllers\API\PartnersController;
+use App\Http\Controllers\API\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,11 @@ Route::get('register', [AuthController::class, 'index'])->name('register.index')
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('login', [AuthController::class, 'login'])->name('login.index');
 
-Route::group(['middleware' => ['auth:api', 'admin']], function () {
+Route::group(['middleware' => ['auth:api']], function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('profile', [ProfileController::class, 'editUser'])->name('profile.edit');
+    Route::post('resetPassword', [ProfileController::class, 'resetPassword'])->name('profile.reset.password');
 });
 
 Route::get('dashboard', [AuthController::class, 'dashboard']);
