@@ -163,6 +163,7 @@
     ]
 }
 ```
+
 </details>
 <details><summary>get Content of current page</summary>
 
@@ -187,6 +188,7 @@
     "message": "Content Page."
 }
 ```
+
 </details>
 <details><summary>get partners</summary>
 
@@ -211,4 +213,98 @@
     "message": "All partners"
 }
 ```
+
+</details>
+
+
+
+
+<details><summary>update user profile data</summary>
+
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/profile
+-
+    - **Parameters:**
+
+```json
+{
+    "first_name": "123456",
+    "last_name": "test2",
+    "birth_date": "1997-14-07",
+    "mobile_no": "094883035",
+    "email": "shushanvardanyan15@gmail.com"
+}
+```
+
+- **Success Message:**
+
+ ```json
+{
+    "success": true,
+    "data": {
+        "id": 2,
+        "first_name": "123456",
+        "last_name": "test2",
+        "email": "shushanvardanyxan15@gmail.com",
+        "role": null,
+        "birth_date": "1997-14-07",
+        "mobile_no": "054124812",
+        "created_at": "2023-04-19T08:19:03.000000Z",
+        "updated_at": "2023-04-19T13:55:28.000000Z"
+    },
+    "message": "user data updated successfully."
+}
+```
+
+</details>
+
+
+
+<details><summary>reset password</summary>
+
+- **Method:** POST
+- **URL:**    http://api-traveling.rocketsystems.net/api/resetPassword
+-
+    - **Parameters:**
+
+```json
+{
+    "current_password": "789456123",
+    "new_password": "789456112323",
+    "confirm_new_password": "789456112323"
+}
+```
+
+- **Success Message:**
+
+ ```json
+{
+    "success": true,
+    "data": {
+        "id": 2,
+        "first_name": "123456",
+        "last_name": "test2",
+        "email": "sdcsfsd@gmail.com",
+        "role": null,
+        "birth_date": "1997-14-07",
+        "mobile_no": "015658626",
+        "created_at": "2023-04-19T08:19:03.000000Z",
+        "updated_at": "2023-04-19T13:55:28.000000Z"
+    },
+    "message": "Password changed successfully."
+}
+```
+
+- **Error Message:**
+
+ ```json
+{
+    "success": false,
+    "message": "Old Password Doesn't match!",
+    "data": [
+        "Old Password Doesn't match!"
+    ]
+}
+```
+
 </details>
